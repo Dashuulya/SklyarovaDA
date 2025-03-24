@@ -28,5 +28,6 @@ namespace SklyarovaDA
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Grade> Grade { get; set; }
+        public virtual Attendance Attendance { get; set; }
     }
 }

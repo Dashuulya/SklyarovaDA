@@ -18,5 +18,7 @@ namespace SklyarovaDA
         public int StudentId { get; set; }
         public System.DateTime Date { get; set; }
         public Nullable<bool> IsPresent { get; set; }
+    
+        public virtual Student Student { get; set; }
     }
 }
