@@ -87,6 +87,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>gypsophila.tt</DependentUpon>
     </Compile>
+    <Compile Include="PasswordChange.xaml.cs">
+      <DependentUpon>PasswordChange.xaml</DependentUpon>
+    </Compile>
     <Compile Include="registration.xaml.cs">
       <DependentUpon>registration.xaml</DependentUpon>
     </Compile>
@@ -130,6 +133,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PasswordChange.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
