@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,51 @@ namespace SklyarovaDA
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Password;
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Пожалуйста, введите логин или пароль");
+                return;
+            }
+
+            using (var context = new ЖурналEntities())
+            {
+                var user = await context.Users
+                    .Where(u => u.username == username)
+                    .FirstOrDefaultAsync();
+                if (user == null)
+                {
+                    MessageBox.Show("Такого пользователя не существует", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (user.IsLocked.HasValue && user.IsLocked.Value)
+                {
+                    MessageBox.Show("Вы заблокированы, обратитесь в поддержку", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (user.Last_login.HasValue &&(DateTime.Now - user.Last_login.Value).TotalDays > 30 &&  user.role != 1)
+                {
+                    user.IsLocked = true;
+                    await context.SaveChangesAsync();
+                    MessageBox.Show("Вы заблокированы, обратитесь в поддержку", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                    return;
+                }
+                if (user.password == password)
+                {
+                    user.Last_login = DateTime.Now;
+                    user.Faild_login = 0;
+                    await context.SaveChangesAsync();
+                    MessageBox.Show("Успешная авторизация", "Ураааа", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+            }
         }
     }
 }

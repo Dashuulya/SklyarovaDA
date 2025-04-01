@@ -93,10 +93,16 @@
     <Compile Include="registration.xaml.cs">
       <DependentUpon>registration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Roles.cs">
+      <DependentUpon>gypsophila.tt</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>gypsophila.tt</DependentUpon>
     </Compile>
     <Compile Include="sysdiagrams.cs">
+      <DependentUpon>gypsophila.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Users.cs">
       <DependentUpon>gypsophila.tt</DependentUpon>
     </Compile>
     <Page Include="AddEditStudentWindow.xaml">

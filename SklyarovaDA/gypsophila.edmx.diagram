@@ -11,6 +11,9 @@
         <EntityTypeShape EntityType="ЖурналModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
         <AssociationConnector Association="ЖурналModel.FK_Grade_Student" ManuallyRouted="false" />
         <AssociationConnector Association="ЖурналModel.FK_Student_Attendance" />
+        <EntityTypeShape EntityType="ЖурналModel.Roles" Width="1.5" PointX="5.375" PointY="1.75" />
+        <EntityTypeShape EntityType="ЖурналModel.Users" Width="1.5" PointX="7.625" PointY="1" />
+        <AssociationConnector Association="ЖурналModel.FK_Users_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
